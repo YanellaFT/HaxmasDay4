@@ -4,7 +4,12 @@ const app = new Hono()
 
 app.get("/", (c) => c.text("Beans!"))
 
-export default app
+const port = Number(process.env.PORT) || 3000
+
+export default {
+  port,
+  fetch: app.fetch,
+}
 
 import { createWish, deleteWish, fulfillWish, listWishes } from "./db/queries"
 
